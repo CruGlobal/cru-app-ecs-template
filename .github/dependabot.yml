@@ -1,0 +1,81 @@
+version: 2
+
+updates:
+  # ──────────────────────────────────────────────────────────────────────────
+  # Bundler (Ruby) dependencies. Minor and patch bumps are grouped into
+  # a single weekly PR to keep review cost flat — the auto-merge
+  # workflow handles them once CI is green. Major version bumps are
+  # intentionally left ungrouped so each one gets its own PR and a
+  # proper migration check.
+  # ──────────────────────────────────────────────────────────────────────────
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      bundler-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # GitHub Actions used by .github/workflows/**. Same policy: one
+  # batched PR per week for minor + patch bumps; majors stay per-PR so
+  # any breaking change in an action surface surfaces distinctly.
+  # ──────────────────────────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Docker base image (Ruby alpine pulled from the ECR public mirror).
+  # Catches base-image CVEs and Ruby patch releases as PRs instead of
+  # being silently out of date.
+  # ──────────────────────────────────────────────────────────────────────────
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Uncomment if the app adds a package.json (e.g. an assets pipeline,
+  # esbuild, or a Vite/Webpack front end). Same grouping policy as
+  # bundler.
+  # ──────────────────────────────────────────────────────────────────────────
+  # - package-ecosystem: "npm"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 5
+  #   groups:
+  #     npm-dependencies:
+  #       patterns:
+  #         - "*"
+  #       update-types:
+  #         - "minor"
+  #         - "patch"
+  #   commit-message:
+  #     prefix: "deps"
+  #     include: "scope"
