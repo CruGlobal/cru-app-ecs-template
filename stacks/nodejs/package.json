@@ -1,0 +1,16 @@
+{
+  "name": "cru-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A Cru application running on AWS ECS.",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "node --watch --experimental-strip-types src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5.6"
+  }
+}
