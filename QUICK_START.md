@@ -1,7 +1,7 @@
 # Quick Start — Cru App on AWS ECS
 
 How a Cru application built from this template is provisioned, built, and
-deployed. If you're a coding agent, read **[CLAUDE.md](./CLAUDE.md)** first —
+deployed. If you're a coding agent, read **[AGENTS.md](./AGENTS.md)** first —
 it covers day-to-day work; this file covers the platform around it.
 
 ## 1. Pick a language
@@ -15,7 +15,7 @@ bin/use-language nodejs   # or: ruby | python
 That copies the chosen stack (`stacks/<lang>/`) to the repo root — a minimal
 web app with a `Dockerfile`, `build.sh`, `.tool-versions`, and a working
 health check — and removes the rest. Commit the result, then build your app on
-top of it. (See [CLAUDE.md](./CLAUDE.md) for the per-language run commands.)
+top of it. (See [AGENTS.md](./AGENTS.md) for the per-language run commands.)
 
 ## 2. Provision the application (TerraBloks)
 
@@ -76,7 +76,7 @@ Run `cru --help` for the full command set.
 
 ## Reference
 
-- **[CLAUDE.md](./CLAUDE.md)** — how coding agents should work in this repo.
+- **[AGENTS.md](./AGENTS.md)** — how coding agents should work in this repo.
 - [`cru-terraform`](https://github.com/CruGlobal/cru-terraform) — infrastructure as code.
 - [`cru-deploy`](https://github.com/CruGlobal/cru-deploy) — where deployments run.
 - [aws/ecs/app Terraform module](https://github.com/CruGlobal/cru-terraform-modules/blob/main/aws/ecs/app/README.md)

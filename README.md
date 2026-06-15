@@ -33,5 +33,5 @@ CLI, and enabling builds.
 
 ## For coding agents
 
-See **[CLAUDE.md](./CLAUDE.md)** — it explains how this repo is wired and how to
+See **[AGENTS.md](./AGENTS.md)** — it explains how this repo is wired and how to
 work in it safely.
